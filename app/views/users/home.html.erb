@@ -1,6 +1,6 @@
 <h1>Hello, <%= @name %>!</h1>
 
-<% if @user.present? %>
+<% if current_user.present? %>
   <a href="/logout" data-method="delete">
     Log out
   </a>
