@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action(:authorize_user, :only => [ :show, :index ])
 
   # renders the home page
   def home
@@ -10,8 +11,6 @@ class UsersController < ApplicationController
   end
 
   def index
-    authorize_user
-
     @users = User.all
   end
 
@@ -20,7 +19,6 @@ class UsersController < ApplicationController
   end
 
   def show
-    authorize_user
   end
 
   # receives form and creates a user from that data
