@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  devise_for :super_users
+
   # This route sends requests to our naked
   # url to the home action in the users controller
   root to: 'users#home'

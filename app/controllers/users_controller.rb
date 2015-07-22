@@ -1,11 +1,11 @@
 class UsersController < ApplicationController
-  before_action(:authorize_user, :only => [ :show ])
+  before_action(:authenticate_super_user!, :only => [ :show ])
   before_action(:admin_only, :only => [ :index ])
 
   # renders the home page
   def home
-    if current_user.present?
-      @name = current_user.username
+    if super_user_signed_in?
+      @name = current_super_user.email
     else
       @name = "Ironhacker"
     end
