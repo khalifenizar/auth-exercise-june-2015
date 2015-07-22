@@ -2,10 +2,10 @@ class UsersController < ApplicationController
 
   # renders the home page
   def home
-    user = User.find_by(id: session[:user_id])
+    @user = User.find_by(id: session[:user_id])
 
-    if user.present?
-      @name = user.username
+    if @user.present?
+      @name = @user.username
     else
       @name = "Ironhacker"
     end
