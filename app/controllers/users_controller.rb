@@ -1,9 +1,15 @@
 class UsersController < ApplicationController
 
   # renders the home page
-def home
-  @name = current_user ? @current_user.username : "Ironhacker"
-end
+  def home
+    user = User.find_by(id: session[:user_id])
+
+    if user.present?
+      @name = user.username
+    else
+      @name = "Ironhacker"
+    end
+  end
 
   def index
     @users = User.all
@@ -24,7 +30,7 @@ end
     else
       redirect_to '/signup'
     end
-  end   
+  end
 
   private
 
