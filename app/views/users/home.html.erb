@@ -1,14 +1,23 @@
 <h1>Hello, <%= @name %>!</h1>
 
+<% if flash[:message].present? %>
+  <h2><%= flash[:message] %></h2>
+<% end %>
+
 <% if current_user.present? %>
+
   <a href="/logout" data-method="delete">
     Log out
   </a>
   <br>
+
+  <a href="/profile">My profile</a><br>
+  <a href="/users">All profiles</a>
+
 <% else %>
+
   <a href="/signup">Sign up</a><br>
   <a href="/login">Log in</a><br>
+
 <% end %>
 
-<a href="/profile">My profile</a><br>
-<a href="/users">All profiles</a>
